@@ -9,6 +9,7 @@ namespace WebApplication1.sample
 {
     public partial class WebForm1 : System.Web.UI.Page
     {
+        [Serializable]
         public class test
         {
             public int no
@@ -22,6 +23,13 @@ namespace WebApplication1.sample
                 set;
             }
         }
+
+        public List<test> VStest
+        {
+            get { return (List<test>)ViewState["test"]; }
+            set { ViewState["test"] = value; }
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             List<test> tests = new List<test>();
@@ -34,9 +42,26 @@ namespace WebApplication1.sample
                 };
                 tests.Add(test);
             }
-
+            VStest = tests;
             ListView1.DataSource = tests;
             ListView1.DataBind();
+        }
+
+        protected void ListView1_PagePropertiesChanging(object sender, PagePropertiesChangingEventArgs e)
+        {
+            var temp1 = DataPager1.StartRowIndex;
+            var temp2 = DataPager1.MaximumRows;
+            DataPager1.SetPageProperties(e.StartRowIndex, e.MaximumRows, false);
+            var temp3 = DataPager1.StartRowIndex;
+            var temp4 = DataPager1.MaximumRows;
+            ListView1.DataSource = VStest;
+            ListView1.DataBind();
+        }
+
+        protected void ListView1_PagePropertiesChanged(object sender, EventArgs e)
+        {
+            var temp1 = DataPager1.StartRowIndex;
+            var temp2 = DataPager1.MaximumRows;
         }
     }
 }
