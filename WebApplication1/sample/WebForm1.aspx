@@ -31,16 +31,22 @@
                     <div style="overflow-y: scroll; height: 200px; width: 350px;">
                         <asp:ListView ID="ListView1" runat="server"
                             OnPagePropertiesChanging="ListView1_PagePropertiesChanging"
-                            OnPagePropertiesChanged="ListView1_PagePropertiesChanged"
-                            on>
+                            OnItemDataBound="ListView1_ItemDataBound">
                             <ItemTemplate>
-                                <table style="border-collapse: collapse;" border="1">
-                                    <tr>
-                                        <td>&nbsp;<asp:Label ID="Label1" runat="server" Text='<%# Eval("no") %>' Width="100px"></asp:Label></td>
+<%--                                <table style="border-collapse: collapse;" border="1">
+                                    <tr>--%>
+ <%--                                       <td>&nbsp;<asp:Label ID="Label1" runat="server" Text='<%# Eval("no") %>' Width="100px"></asp:Label></td>
                                         <td>&nbsp;<asp:Label ID="Label2" runat="server" Text='<%# Eval("item") %>' Width="100px"></asp:Label></td>
-                                        <td>&nbsp;<asp:Label ID="Label3" runat="server" Text="Label" Width="100px"></asp:Label></td>
-                                    </tr>
-                                </table>
+                                        <td>&nbsp;<asp:Label ID="Label3" runat="server" Text="Label" Width="100px"></asp:Label></td>--%>
+                                        <asp:ListView ID="ListView2" runat="server">
+                                            <ItemTemplate>
+<%--                                                <td>
+
+                                                </td>--%>
+                                            </ItemTemplate>
+                                        </asp:ListView>
+   <%--                                 </tr>
+                                </table>--%>
                             </ItemTemplate>
                         </asp:ListView>
                     </div>

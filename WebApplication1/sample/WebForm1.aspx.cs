@@ -37,7 +37,7 @@ namespace WebApplication1.sample
             {
                 test test = new test()
                 {
-                    no = i,
+                    no = i*33,
                     item = i.ToString()
                 };
                 tests.Add(test);
@@ -62,6 +62,35 @@ namespace WebApplication1.sample
         {
             var temp1 = DataPager1.StartRowIndex;
             var temp2 = DataPager1.MaximumRows;
+        }
+
+        protected void ListView1_ItemDataBound(object sender, ListViewItemEventArgs e)
+        {
+            if (e.Item.ItemType == ListViewItemType.DataItem)
+            {
+                ListViewDataItem item = (ListViewDataItem)e.Item;
+                ListView innerList = (ListView)item.FindControl("ListView2");
+
+                Type type = item.DataItem.GetType();
+                var obj = Convert.ChangeType(item.DataItem, type);
+                var ps = type.GetProperties();                
+
+                Table table = new Table();
+                TableRow row = new TableRow();
+                foreach (var p in ps)
+                {
+                    TableCell cell = new TableCell();
+                    Label lbl = new Label();
+                    lbl.Text = DataBinder.Eval(obj, p.Name).ToString();
+                    cell.Controls.Add(lbl);
+                    row.Controls.Add(cell);
+                }
+
+                table.Rows.Add(row);
+                table.CssClass = "";
+
+                innerList.Controls.Add(table);
+            }
         }
     }
 }
