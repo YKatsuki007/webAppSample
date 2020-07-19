@@ -1,5 +1,8 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebForm1.aspx.cs" Inherits="WebApplication1.sample.WebForm1" %>
 
+<%@ Register Src="~/sample/WebUserControl1.ascx" TagPrefix="uc1" TagName="WebUserControl1" %>
+
+
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -53,6 +56,14 @@
                 </ContentTemplate>
             </asp:UpdatePanel>
         </div>
+        <asp:Button ID="Button1" runat="server" Text="Button" OnClick="Button1_Click" />
+        <asp:Button ID="Button2" runat="server" Text="Button" />
+        <asp:Label ID="Label4" runat="server" Text="Label"></asp:Label>
+        <asp:Panel ID="Panel1" runat="server">
+            <uc1:WebUserControl1 runat="server" ID="WebUserControl1" />
+        </asp:Panel>
+
+
     </form>
 </body>
 </html>

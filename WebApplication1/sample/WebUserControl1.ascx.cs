@@ -7,8 +7,13 @@ using System.Web.UI.WebControls;
 
 namespace WebApplication1.sample
 {
-    public partial class WebForm1 : System.Web.UI.Page
+    public partial class WebUserControl1 : System.Web.UI.UserControl
     {
+        //public WebUserControl1(ListView paramlistView)
+        //{
+        //    this.ListView1 = paramlistView;
+        //}
+
         [Serializable]
         public class test
         {
@@ -32,12 +37,31 @@ namespace WebApplication1.sample
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            //List<test> tests = new List<test>();
+            //for (int i = 0; i < 100000; i++)
+            //{
+            //    test test = new test()
+            //    {
+            //        no = i * 33,
+            //        item = i.ToString()
+            //    };
+            //    tests.Add(test);
+            //}
+            //VStest = tests;
+            //ListView1.DataSource = tests;
+            //ListView1.DataBind();
+            if(IsPostBack)
+            SetData();
+        }
+
+        public void SetData()
+        {
             List<test> tests = new List<test>();
-            for(int i=0; i< 100000; i++)
+            for (int i = 0; i < 100000; i++)
             {
                 test test = new test()
                 {
-                    no = i*33,
+                    no = i * 111,
                     item = i.ToString()
                 };
                 tests.Add(test);
@@ -45,16 +69,10 @@ namespace WebApplication1.sample
             VStest = tests;
             ListView1.DataSource = tests;
             ListView1.DataBind();
-
-            foreach(string item in Request.Form.Keys)
-            {
-                if (item.Contains(Button1.ClientID))
-                {
-                    Label4.Text = item.ToString();
-                }
-            }
-
+            //((ListView)FindControl(ListView1.ClientID)).DataSource = tests;
+            //((ListView)FindControl(ListView1.ClientID)).DataBind();
         }
+
 
         protected void ListView1_PagePropertiesChanging(object sender, PagePropertiesChangingEventArgs e)
         {
@@ -82,7 +100,7 @@ namespace WebApplication1.sample
 
                 Type type = item.DataItem.GetType();
                 var obj = Convert.ChangeType(item.DataItem, type);
-                var ps = type.GetProperties();                
+                var ps = type.GetProperties();
 
                 Table table = new Table();
                 TableRow row = new TableRow();
@@ -100,26 +118,6 @@ namespace WebApplication1.sample
 
                 innerList.Controls.Add(table);
             }
-        }
-
-        protected void Button1_Click(object sender, EventArgs e)
-        {
-            //List<test> tests = new List<test>();
-            //for (int i = 0; i < 100000; i++)
-            //{
-            //    test test = new test()
-            //    {
-            //        no = i * 111,
-            //        item = i.ToString()
-            //    };
-            //    tests.Add(test);
-            //}
-            //VStest = tests;
-            ////WebUserControl1.DataSource = tests;
-            ////WebUserControl1.DataBind();
-            //WebUserControl1 webUserControl1 = new WebUserControl1();
-            ////((ListView)webUserControl1.FindControl("ListView1")).DataSource = tests;
-            //webUserControl1.SetData();
         }
     }
 }
