@@ -104,22 +104,24 @@ namespace WebApplication1.sample
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            //List<test> tests = new List<test>();
-            //for (int i = 0; i < 100000; i++)
-            //{
-            //    test test = new test()
-            //    {
-            //        no = i * 111,
-            //        item = i.ToString()
-            //    };
-            //    tests.Add(test);
-            //}
-            //VStest = tests;
+            List<test> tests = new List<test>();
+            for (int i = 0; i < 100000; i++)
+            {
+                test test = new test()
+                {
+                    no = i * 111,
+                    item = i.ToString()
+                };
+                tests.Add(test);
+            }
+            VStest = tests;
             ////WebUserControl1.DataSource = tests;
             ////WebUserControl1.DataBind();
             //WebUserControl1 webUserControl1 = new WebUserControl1();
             ////((ListView)webUserControl1.FindControl("ListView1")).DataSource = tests;
             //webUserControl1.SetData();
+            ((ListView)WebUserControl1.FindControl("ListView1")).DataSource = tests;
+            ((ListView)WebUserControl1.FindControl("ListView1")).DataBind();
         }
     }
 }

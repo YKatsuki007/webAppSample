@@ -50,8 +50,9 @@ namespace WebApplication1.sample
             //VStest = tests;
             //ListView1.DataSource = tests;
             //ListView1.DataBind();
-            if(IsPostBack)
-            SetData();
+
+            //if(IsPostBack)
+            //SetData();
         }
 
         public void SetData()
