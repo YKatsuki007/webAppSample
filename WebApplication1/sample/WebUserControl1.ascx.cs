@@ -29,11 +29,22 @@ namespace WebApplication1.sample
             }
         }
 
-        public List<test> VStest
+        public dynamic VStest_UC
         {
-            get { return (List<test>)ViewState["test"]; }
+            get { return (dynamic)ViewState["test"]; }
             set { ViewState["test"] = value; }
         }
+        public dynamic SStest_UC
+        {
+            get { return (dynamic)Session["test"]; }
+            set { Session["test"] = value; }
+        }
+
+        //public delegate List<test> Preservation();
+        //public event Preservation Preservation_Eve;
+        public event Action Preservation_Eve;
+
+
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -53,6 +64,16 @@ namespace WebApplication1.sample
 
             //if(IsPostBack)
             //SetData();
+
+            //var ps = this.Page.GetType().GetProperties().Where(x => x.Name == "Page").FirstOrDefault();
+            //var property = Parent.Page.GetType().GetProperties().Where(x => x.Name == "VStest").FirstOrDefault();
+            //var page = HttpContext.Current.Handler;
+            //var property = (this.Page.GetType().GetProperty("WebForm1").GetType())Page;
+            //var test = property;
+            var pp = Page.Request.Params["VStest"];
+            Preservation_Eve();
+            var val_vs = VStest_UC;
+            var val = SStest_UC;
         }
 
         public void SetData()
@@ -67,7 +88,7 @@ namespace WebApplication1.sample
                 };
                 tests.Add(test);
             }
-            VStest = tests;
+            VStest_UC = tests;
             ListView1.DataSource = tests;
             ListView1.DataBind();
             //((ListView)FindControl(ListView1.ClientID)).DataSource = tests;
@@ -82,7 +103,7 @@ namespace WebApplication1.sample
             DataPager1.SetPageProperties(e.StartRowIndex, e.MaximumRows, false);
             var temp3 = DataPager1.StartRowIndex;
             var temp4 = DataPager1.MaximumRows;
-            ListView1.DataSource = VStest;
+            ListView1.DataSource = VStest_UC;
             ListView1.DataBind();
         }
 

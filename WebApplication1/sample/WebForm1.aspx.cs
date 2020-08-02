@@ -30,6 +30,14 @@ namespace WebApplication1.sample
             set { ViewState["test"] = value; }
         }
 
+        //public List<test> SStest
+        //{
+        //    get { return (List<test>)Session["test"]; }
+        //    set { Session["test"] = value; }
+        //}
+
+        //public WebUserControl1.Preservation preservation += pre;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             List<test> tests = new List<test>();
@@ -54,6 +62,18 @@ namespace WebApplication1.sample
                 }
             }
 
+            WebUserControl1.Preservation_Eve += pre;
+
+        }
+
+        //public List<test> pre()
+        public void pre()
+        {
+            //WebUserControl1.SStest_UC = VStest;
+            WebUserControl1.VStest_UC = VStest;
+            VStest = WebUserControl1.SStest_UC;
+            //return "pre test";
+            //return VStest;
         }
 
         protected void ListView1_PagePropertiesChanging(object sender, PagePropertiesChangingEventArgs e)

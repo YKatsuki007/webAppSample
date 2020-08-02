@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebForm1.aspx.cs" Inherits="WebApplication1.sample.WebForm1" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebForm1.aspx.cs" Inherits="WebApplication1.sample.WebForm1" ClientIDMode="Static" %>
 
 <%@ Register Src="~/sample/WebUserControl1.ascx" TagPrefix="uc1" TagName="WebUserControl1" %>
 
