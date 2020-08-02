@@ -76,24 +76,24 @@ namespace WebApplication1.sample
             var val = SStest_UC;
         }
 
-        public void SetData()
-        {
-            List<test> tests = new List<test>();
-            for (int i = 0; i < 100000; i++)
-            {
-                test test = new test()
-                {
-                    no = i * 111,
-                    item = i.ToString()
-                };
-                tests.Add(test);
-            }
-            VStest_UC = tests;
-            ListView1.DataSource = tests;
-            ListView1.DataBind();
-            //((ListView)FindControl(ListView1.ClientID)).DataSource = tests;
-            //((ListView)FindControl(ListView1.ClientID)).DataBind();
-        }
+        //public void SetData()
+        //{
+        //    List<test> tests = new List<test>();
+        //    for (int i = 0; i < 100000; i++)
+        //    {
+        //        test test = new test()
+        //        {
+        //            no = i * 111,
+        //            item = i.ToString()
+        //        };
+        //        tests.Add(test);
+        //    }
+        //    VStest_UC = tests;
+        //    ListView1.DataSource = tests;
+        //    ListView1.DataBind();
+        //    //((ListView)FindControl(ListView1.ClientID)).DataSource = tests;
+        //    //((ListView)FindControl(ListView1.ClientID)).DataBind();
+        //}
 
 
         protected void ListView1_PagePropertiesChanging(object sender, PagePropertiesChangingEventArgs e)

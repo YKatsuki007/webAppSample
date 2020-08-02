@@ -40,19 +40,23 @@ namespace WebApplication1.sample
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            List<test> tests = new List<test>();
-            for(int i=0; i< 100000; i++)
+            if (!IsPostBack)
             {
-                test test = new test()
+                List<test> tests = new List<test>();
+                for (int i = 0; i < 100; i++)
                 {
-                    no = i*33,
-                    item = i.ToString()
-                };
-                tests.Add(test);
+                    test test = new test()
+                    {
+                        no = i * 33,
+                        item = i.ToString()
+                    };
+                    tests.Add(test);
+                }
+                VStest = tests;
+                ListView1.DataSource = tests;
+                ListView1.DataBind();
             }
-            VStest = tests;
-            ListView1.DataSource = tests;
-            ListView1.DataBind();
+
 
             foreach(string item in Request.Form.Keys)
             {
@@ -71,9 +75,10 @@ namespace WebApplication1.sample
         {
             //WebUserControl1.SStest_UC = VStest;
             WebUserControl1.VStest_UC = VStest;
-            VStest = WebUserControl1.SStest_UC;
+            //VStest = WebUserControl1.SStest_UC;
             //return "pre test";
             //return VStest;
+            Label5.Text = "pre()";
         }
 
         protected void ListView1_PagePropertiesChanging(object sender, PagePropertiesChangingEventArgs e)
@@ -125,7 +130,7 @@ namespace WebApplication1.sample
         protected void Button1_Click(object sender, EventArgs e)
         {
             List<test> tests = new List<test>();
-            for (int i = 0; i < 100000; i++)
+            for (int i = 0; i < 1000; i++)
             {
                 test test = new test()
                 {

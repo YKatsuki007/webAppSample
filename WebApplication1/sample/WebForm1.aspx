@@ -60,10 +60,15 @@
         <asp:Button ID="Button2" runat="server" Text="Button" />
         <asp:Label ID="Label4" runat="server" Text="Label"></asp:Label>
         <asp:Panel ID="Panel1" runat="server">
-            <uc1:WebUserControl1 runat="server" ID="WebUserControl1" />
+            <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+                <ContentTemplate>
+                    <uc1:WebUserControl1 runat="server" ID="WebUserControl1" />
+                </ContentTemplate>
+            </asp:UpdatePanel>            
         </asp:Panel>
-
-
+        <asp:Label ID="Label5" runat="server" Text="Label"></asp:Label>
+        <br />
+        <asp:Label ID="Label6" runat="server" Text="Label"></asp:Label>
     </form>
 </body>
 </html>
