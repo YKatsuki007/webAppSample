@@ -60,7 +60,7 @@ namespace WebApplication1.sample
 
             foreach(string item in Request.Form.Keys)
             {
-                if (item.Contains(Button1.ClientID))
+                if (string.IsNullOrEmpty(item) || item.Contains(Button1.ClientID))
                 {
                     Label4.Text = item.ToString();
                 }
