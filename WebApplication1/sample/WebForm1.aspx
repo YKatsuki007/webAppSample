@@ -36,19 +36,19 @@
                             OnPagePropertiesChanging="ListView1_PagePropertiesChanging"
                             OnItemDataBound="ListView1_ItemDataBound">
                             <ItemTemplate>
-<%--                                <table style="border-collapse: collapse;" border="1">
+                                <%--                                <table style="border-collapse: collapse;" border="1">
                                     <tr>--%>
- <%--                                       <td>&nbsp;<asp:Label ID="Label1" runat="server" Text='<%# Eval("no") %>' Width="100px"></asp:Label></td>
+                                <%--                                       <td>&nbsp;<asp:Label ID="Label1" runat="server" Text='<%# Eval("no") %>' Width="100px"></asp:Label></td>
                                         <td>&nbsp;<asp:Label ID="Label2" runat="server" Text='<%# Eval("item") %>' Width="100px"></asp:Label></td>
                                         <td>&nbsp;<asp:Label ID="Label3" runat="server" Text="Label" Width="100px"></asp:Label></td>--%>
-                                        <asp:ListView ID="ListView2" runat="server">
-                                            <ItemTemplate>
-<%--                                                <td>
+                                <asp:ListView ID="ListView2" runat="server">
+                                    <ItemTemplate>
+                                        <%--                                                <td>
 
                                                 </td>--%>
-                                            </ItemTemplate>
-                                        </asp:ListView>
-   <%--                                 </tr>
+                                    </ItemTemplate>
+                                </asp:ListView>
+                                <%--                                 </tr>
                                 </table>--%>
                             </ItemTemplate>
                         </asp:ListView>
@@ -64,7 +64,7 @@
                 <ContentTemplate>
                     <uc1:WebUserControl1 runat="server" ID="WebUserControl1" />
                 </ContentTemplate>
-            </asp:UpdatePanel>            
+            </asp:UpdatePanel>
         </asp:Panel>
         <asp:Label ID="Label5" runat="server" Text="Label"></asp:Label>
         <br />
